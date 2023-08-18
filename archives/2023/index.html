@@ -14,9 +14,9 @@
 <meta property="og:description" content="关于我自己….">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-18T02:46:25.000Z">
-<meta property="article:modified_time" content="2023-08-18T02:49:25.332Z">
+<meta property="article:modified_time" content="2023-08-18T03:02:05.952Z">
 <meta property="article:author" content="Andy">
-<meta property="article:tag" content="Me">
+<meta property="article:tag" content="工具">
 <meta name="twitter:card" content="summary">
 
 
@@ -70,16 +70,6 @@
 
 <div class="icon">
     
-        
-            <a title="rss"
-               href="/atom.xml"
-               target="_blank">
-                
-                    <svg class="iconfont-svg" aria-hidden="true">
-                        <use xlink:href="#icon-rss"></use>
-                    </svg>
-                
-            </a>
         
     
         
@@ -315,6 +305,10 @@
     <input id="tag-search" />
     <div class="tag-wrapper">
         
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>工作</a>
+            </li>
+        
     </div>
 
 </div>
@@ -325,7 +319,7 @@
         
         <a  class="全部文章 "
            href="/2023/08/hello-world/"
-           data-tag=""
+           data-tag="工作"
            data-author="" >
             <span class="post-title" title="Hello World">Hello World</span>
             <span class="post-date" title="2023-08-18 09:34:25">2023/08/18</span>
@@ -391,15 +385,32 @@
 
         </article>
         
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
         
-        
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: '29245b42b11e6ff42344',
+            clientSecret: '47f297819fa592e6abf91aa83765b2830fa39c2d',
+            repo: 'BBDXF.github.io',
+            owner: 'BBDXF',
+            admin: ['BBDXF'],
+            id: decodeURI(location.pathname),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
-    ©2016-2020 Yelog
+    ©2023-2023 Andy
 </p>
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
@@ -410,24 +421,6 @@
 <a class="" id="rocket" ></a>
 
 </div>
-
-<div class="hide_box" onclick="dashangToggle()"></div>
-<div class="shang_box">
-    <a class="shang_close"  onclick="dashangToggle()">×</a>
-    <div class="shang_tit">
-        <p>喜欢就点赞,疼爱就打赏</p>
-    </div>
-    <div class="shang_payimg">
-        <div class="pay_img">
-            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
-            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
-        </div>
-    </div>
-    <div class="shang_payselect">
-        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
-    </div>
-</div>
-
 
 </body>
 <script src="/js/jquery.pjax.js?v=1.1.0" ></script>
@@ -442,14 +435,6 @@
         
 
         /*渲染打赏样式*/
-        
-        $("input[name=pay]").on("click", function () {
-            if($("input[name=pay]:checked").val()=="weixin"){
-                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
-            } else {
-                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
-            }
-        })
         
 
         /*高亮代码块行号*/
@@ -468,11 +453,6 @@
     }
 
     /*打赏页面隐藏与展示*/
-    
-    function dashangToggle() {
-        $(".shang_box").fadeToggle();
-        $(".hide_box").fadeToggle();
-    }
     
 
 </script>
